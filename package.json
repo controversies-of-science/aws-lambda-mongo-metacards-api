@@ -5,6 +5,16 @@
   "author": "Chris Reeve",
   "license": "MIT",
   "dependencies": {
+    "serverless-optimizer-plugin": "^2.5.1",
+    "serverless-runtime-babel": "0.0.6",
+    "serverless-webpack-plugin": "^0.4.5",
     "uuid": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babelify": "^7.3.0",
+    "webpack": "^2.2.1"
   }
 }
