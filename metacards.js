@@ -1,28 +1,35 @@
 'use strict';
 
-import { MongoClient } from "mongodb";
+let MongoClient = require('mongodb').MongoClient
 
 const 
-  METACARDS = 'metacards';
+    METACARDS = 'metacards';
 
 module.exports.list = (event, context, callback) => {
-  MongoClient.connect(process.env.MLABDB, (err, db) => {
-      if (err) { throw err; }
-      db.collection(METACARDS).find();
-      db.close();
-      context.done();
-  });
+    MongoClient.connect(process.env.MLABDB, (err, db) => {
+        if (err) { throw err; }
 
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+        db.collection(METACARDS)
+            .find()
+            .toArray((err, docs) => {
 
-  callback(null, response);
+            if (error) {
+                console.error(error);
+                callback(new Error('Couldn\'t fetch the metacard data.'));
+            } else {
+                const response = {
+                    statusCode: 200,
+                    body: JSON.stringify({
+                        message: JSON.stringify(docs),
+                        input: event
+                    });
+                };
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+                callback(null, response);
+            }
+
+            db.close();
+            context.done();
+        }
+    });
 };
