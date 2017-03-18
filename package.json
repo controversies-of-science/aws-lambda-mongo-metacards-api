@@ -1,5 +1,32 @@
 {
+  "name": "aws-lambda-mongo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cards.js",
   "dependencies": {
-    "mongodb": "^2.2.25"
-  }
+    "babel-runtime": "^6.23.0",
+    "mongodb": "^2.2.25",
+    "serverless-webpack": "^1.0.0-rc.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "serverless-webpack": "^1.0.0-rc.4",
+    "webpack": "^2.2.1",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worldviewer/aws-lambda-mongo-api.git"
+  },
+  "author": "Chris Reeve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/worldviewer/aws-lambda-mongo-api/issues"
+  },
+  "homepage": "https://github.com/worldviewer/aws-lambda-mongo-api#readme"
 }
