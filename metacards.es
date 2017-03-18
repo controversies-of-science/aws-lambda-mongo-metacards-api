@@ -1,6 +1,6 @@
 'use strict';
 
-let MongoClient = require('mongodb').MongoClient
+let MongoClient = require('mongodb').MongoClient;
 
 const 
     METACARDS = 'metacards';
@@ -22,7 +22,7 @@ module.exports.list = (event, context, callback) => {
                     body: JSON.stringify({
                         message: JSON.stringify(docs),
                         input: event
-                    });
+                    })
                 };
 
                 callback(null, response);
@@ -30,6 +30,6 @@ module.exports.list = (event, context, callback) => {
 
             db.close();
             context.done();
-        }
+        });
     });
 };

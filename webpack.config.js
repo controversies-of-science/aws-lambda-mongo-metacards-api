@@ -1,14 +1,19 @@
+var nodeExternals = require('webpack-node-externals');
+
 module.exports = {
 	entry: {
 		cards: './cards.es',
 		metacards: './metacards.es'
 	},
 	target: 'node',
+	// because 'aws-sdk' is not compatible with webpack,
+	// we exclude all node dependencies
+	externals: [nodeExternals()],
 	module: {
 		loaders: [
     		{
-        		test: /\.js$/,
-        		loaders: [ 'babel' ],
+        		test: /\.es$/,
+        		loaders: [ 'babel-loader' ],
         		exclude: /node_modules/,
     		}
     	]
@@ -18,10 +23,5 @@ module.exports = {
     	path: 'build',
     	filename: '[name].js'
   	},
-	plugins: [
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: { warnings: false }
-		}),
-	]
+	plugins: []
 }

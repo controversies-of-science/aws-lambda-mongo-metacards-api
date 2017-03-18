@@ -9,7 +9,7 @@ provider:
 
 functions:
   metacardsList:
-    handler: metacards.list
+    handler: build/metacards.list
     description: Gets a complete listing of the controversy card collection
     events:
       - http:
@@ -18,7 +18,7 @@ functions:
           cors: true
 
   cardsGet:
-    handler: cards.get
+    handler: build/cards.get
     description: Gets all information for a specific card, by id
     events:
       - http:
@@ -28,3 +28,7 @@ functions:
 
 plugins:
   - serverless-webpack
+
+# enable auto-packing of external modules
+custom:
+  webpackIncludeModules: true
