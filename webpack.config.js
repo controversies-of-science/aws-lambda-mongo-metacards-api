@@ -1,9 +1,10 @@
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('webpack-node-externals'),
+	path = require('path');
 
 module.exports = {
 	entry: {
-		cards: './cards.es',
-		metacards: './metacards.es'
+		metacards: path.join(__dirname, 'metacards.es'),
+		cards: path.join(__dirname, 'cards.es')
 	},
 	target: 'node',
 	// because 'aws-sdk' is not compatible with webpack,
@@ -14,13 +15,14 @@ module.exports = {
     		{
         		test: /\.es$/,
         		loaders: [ 'babel-loader' ],
+				include: __dirname,
         		exclude: /node_modules/,
     		}
     	]
 	},
 	output: {
     	libraryTarget: 'commonjs',
-    	path: 'build',
+		path: path.join(__dirname, 'build'),
     	filename: '[name].js'
   	},
 	plugins: []
