@@ -8,13 +8,13 @@ provider:
   name: aws
   runtime: nodejs4.3
   stage: dev
+  environment:
+    MLABDB: ${self:custom.secrets.MLABDB}
 
 functions:
   metacardsList:
     handler: metacards.list
     description: Gets a complete listing of the controversy card collection
-    environment:
-      MLABDB: ${self:custom.secrets.MLABDB}
     events:
       - http:
           path: metacards
