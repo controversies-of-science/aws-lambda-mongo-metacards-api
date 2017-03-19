@@ -1,34 +1,28 @@
 service: controversy-cards
 
+plugins:
+  - serverless-webpack
+  - serverless-secrets-plugin
+
 provider:
   name: aws
   runtime: nodejs4.3
   stage: dev
-  environment:
-    MLABDB: process.env.MLABDB
 
 functions:
   metacardsList:
-    handler: build/metacards.list
+    handler: metacards.list
     description: Gets a complete listing of the controversy card collection
+    environment:
+      MLABDB: ${self:custom.secrets.MLABDB}
     events:
       - http:
           path: metacards
           method: get
           cors: true
-
-  cardsGet:
-    handler: build/cards.get
-    description: Gets all information for a specific card, by id
-    events:
-      - http:
-          path: cards/{id}
-          method: get
-          cors: true     
-
-plugins:
-  - serverless-webpack
+          integration: lambda
 
 # enable auto-packing of external modules
-# custom:
-#   webpackIncludeModules: true
+custom:
+  webpackIncludeModules: true
+  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}

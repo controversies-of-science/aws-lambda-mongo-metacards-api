@@ -4,10 +4,7 @@ var path = require('path');
 // process.env.NODE_ENV = 'production';
 
 module.exports = {
-	entry: {
-		metacards: path.join(__dirname, 'metacards.es'),
-		cards: path.join(__dirname, 'cards.es')
-	},
+	entry: './metacards.js',
 	target: 'node',
 	// because 'aws-sdk' is not compatible with webpack,
 	// we exclude all node dependencies
@@ -15,17 +12,11 @@ module.exports = {
 	module: {
 		loaders: [
     		{
-        		test: /\.es$/,
+        		test: /\.js$/,
         		loaders: [ 'babel-loader' ],
         		include: __dirname,
         		exclude: /node_modules/,
     		}
     	]
-	},
-	output: {
-    	libraryTarget: 'commonjs',
-		path: path.join(__dirname, 'build'),
-    	filename: '[name].js'
-  	},
-	plugins: []
+	}
 }
