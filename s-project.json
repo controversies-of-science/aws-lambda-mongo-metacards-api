@@ -1,0 +1,9 @@
+plugins: [
+	"serverless-webpack-plugin"
+]
+
+custom: {
+    "webpack": {
+        "configPath": "path/relative/to/project-path"
+    }
+}
