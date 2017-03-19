@@ -2,6 +2,10 @@
 
 let MongoClient = require('mongodb').MongoClient;
 
+if (!global._babelPolyfill) {
+    require('babel-polyfill');
+}
+
 const 
     METACARDS = 'metacards';
 

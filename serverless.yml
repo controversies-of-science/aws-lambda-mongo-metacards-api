@@ -30,5 +30,5 @@ plugins:
   - serverless-webpack
 
 # enable auto-packing of external modules
-custom:
-  webpackIncludeModules: true
+# custom:
+#   webpackIncludeModules: true

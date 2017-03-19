@@ -1,5 +1,7 @@
-var nodeExternals = require('webpack-node-externals'),
-	path = require('path');
+var nodeExternals = require('webpack-node-externals');
+var path = require('path');
+
+// process.env.NODE_ENV = 'production';
 
 module.exports = {
 	entry: {
@@ -15,6 +17,7 @@ module.exports = {
     		{
         		test: /\.es$/,
         		loaders: [ 'babel-loader' ],
+        		include: __dirname,
         		exclude: /node_modules/,
     		}
     	]
