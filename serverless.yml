@@ -1,4 +1,4 @@
-service: controversy-cards
+service: controversy-cards-metacards-endpoint
 
 plugins:
   - serverless-webpack
